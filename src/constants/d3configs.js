@@ -5,8 +5,6 @@
 import * as d3 from 'd3';
 import * as constants from './constants';
 
-// export const formatCount = d3.format(",.0f");
-
 export const formatTime = d3.timeFormat("%H:%M");
 
 export const formatMinutes = function(d) {

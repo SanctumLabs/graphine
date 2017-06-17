@@ -15,6 +15,17 @@ export const formatMinutes = function(d) {
         return formatTime(t);
     };
 
+export function friendlySeconds(seconds) {
+    return parseInt(seconds / 60) + ":" + seconds % 60;
+}
+
+export function createToolTip(d) {
+    let tooltipHTML = "<span class = 'name'>" + d.Name + ": " + d.Nationality + "</span>";
+    tooltipHTML += "<br/>Year: " + d.Year + ", Time: " + friendlySeconds(d.Seconds) + "<br/>";
+    tooltipHTML += d.doping !== "" ?  "<br/>" + d.Doping :"<br/>No Doping Allegation";
+    return tooltipHTML;
+}
+
 export const yScale = d3.scaleLinear().domain([1, 36]).range([0, constants.HEIGHT]);
 export const xScale = d3.scaleLinear().domain([60 * 3.5, 0]).range([0, constants.WIDTH]);
 export const yAxis = d3.axisLeft(yScale).ticks(8);

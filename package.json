@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "d3": "^4.9.1",
+    "d3-tip": "^0.7.1",
     "prop-types": "^15.5.10",
     "react": "^15.6.0",
     "react-dom": "^15.6.0"

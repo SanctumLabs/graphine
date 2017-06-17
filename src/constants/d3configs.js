@@ -5,7 +5,7 @@
 import * as d3 from 'd3';
 import * as constants from './constants';
 
-export const formatCount = d3.format(",.0f");
+// export const formatCount = d3.format(",.0f");
 
 export const formatTime = d3.timeFormat("%H:%M");
 
@@ -25,6 +25,9 @@ export function createToolTip(d) {
     tooltipHTML += d.doping !== "" ?  "<br/>" + d.Doping :"<br/>No Doping Allegation";
     return tooltipHTML;
 }
+
+export const tooltip = d3.select("body").append("div").attr("class", "tooltip")
+    .style("opacity", 0);
 
 export const yScale = d3.scaleLinear().domain([1, 36]).range([0, constants.HEIGHT]);
 export const xScale = d3.scaleLinear().domain([60 * 3.5, 0]).range([0, constants.WIDTH]);

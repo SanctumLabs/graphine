@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import * as d3 from 'd3';
 import * as d3Configs from '../constants/d3configs';
 import * as constants from '../constants/constants';
-import tooltip from './tooltip';
 import fetchData from '../api/api';
 
 
@@ -33,57 +32,18 @@ export default class Chart extends Component{
         });
     }
 
-    componentDidMount(){
-        // start drawing onto DOM
-        this._startDrawing();
-    }
-
     //noinspection JSMethodCanBeStatic
     /**
      * Starts drawing chart onto DOM
      * */
     _startDrawing(){
         //Create SVG element
-        let svg = d3.select("#container").append("svg")
+        let svg = d3.select("#container")
+            .append("svg")
             .attr("width", constants.WIDTH + constants.MARGIN.left + constants.MARGIN.right)
             .attr("height", constants.HEIGHT + constants.MARGIN.top + constants.MARGIN.bottom)
             .append("g")
             .attr("transform", "translate(" + constants.MARGIN.left + "," + constants.MARGIN.top + ")");
-
-        let ascents = svg.selectAll("circle")
-            .data(this.state.data)
-            .enter()
-            .append("circle")
-            .attr("cx", function(d) {
-                return d3Configs.xScale(d.behind);
-            })
-            .attr("cy", function(d) {
-                return d3Configs.yScale(d.Place);
-            })
-            .attr("r", 5)
-            .attr("fill", function(d) {
-                if (d.Doping === "") {
-                    return "#333";
-                }
-                return "#f44";
-            })
-            .attr("data-legend", function(d) {
-                return d.legend;
-            })
-            .on("mouseover", function(d) {
-                tooltip.transition()
-                    .duration(200)
-                    .style("opacity", .9);
-
-                tooltip.html(d3Configs.createToolTip(d))
-                    .style("left", ( constants.WIDTH/2) + "px")
-                    .style("top", (280) + "px");
-            })
-            .on("mouseout", function(d) {
-                tooltip.transition()
-                    .duration(500)
-                    .style("opacity", 0);
-            });
 
         //text labels
         svg.selectAll("text").data(this.state.data)
@@ -194,10 +154,47 @@ export default class Chart extends Component{
             .attr("text-anchor", "left")
             .attr("class", "legend")
             .text("Riders with doping allegations");
+
+        // append data
+        svg.selectAll("circle")
+            .data(this.state.data)
+            .enter()
+            .append("circle")
+            .attr("cx", function(d) {
+                return d3Configs.xScale(d.behind);
+            })
+            .attr("cy", function(d) {
+                return d3Configs.yScale(d.Place);
+            })
+            .attr("r", 5)
+            .attr("fill", function(d) {
+                if (d.Doping === "") {
+                    return "#333";
+                }
+                return "#f44";
+            })
+            .attr("data-legend", function(d) {
+                return d.legend;
+            })
+            .on("mouseover", function(d) {
+                d3Configs.tooltip.transition()
+                    .duration(200)
+                    .style("opacity", .9);
+
+                d3Configs.tooltip.html(d3Configs.createToolTip(d))
+                    .style("left", ( constants.WIDTH/2) + "px")
+                    .style("top", (280) + "px");
+            })
+            .on("mouseout", function(d) {
+                d3Configs.tooltip.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            });
     }
 
     //noinspection JSMethodCanBeStatic
     render(){
+        this._startDrawing();
         //noinspection CheckTagEmptyBody
         return(
             <div id="container"></div>

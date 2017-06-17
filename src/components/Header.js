@@ -8,7 +8,7 @@ const Header = () => {
           <h2>D3 Scatterplot</h2>
         </div>
     )
-}
+};
 
 export default Header
 

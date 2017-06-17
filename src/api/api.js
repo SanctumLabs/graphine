@@ -11,7 +11,7 @@ import axios from 'axios';
  * @param {String} url for fetching the data
  * @returns {Promise.<TResult>} data array
  * */
-export default function fetchData(url = constants.CYCLIST_DAT_URL){
+export default function fetchData(url = constants.CYCLIST_DATA_URL){
     return axios.get(url).then((response) => {
         return response.data;
     }).catch((error) =>{

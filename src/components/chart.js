@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import * as d3 from 'd3';
+import * as d3Configs from '../constants/d3configs';
+import * as constants from '../constants/constants';
 import fetchData from '../api/api';
 
 
@@ -8,7 +10,9 @@ export default class Chart extends Component{
         super();
         this.state ={
             data : []
-        }
+        };
+
+        this._startDrawing = this._startDrawing.bind(this);
     }
 
     componentWillMount(){
@@ -25,14 +29,33 @@ export default class Chart extends Component{
             this.setState({data : formattedData});
         }.bind(this)).catch((error)=>{
             console.error("Error in Chart when fetching data:", error);
-        })
+        });
     }
 
-    render(){
-        return(
-            <div>
+    componentDidMount(){
+        // start drawing onto DOM
+        this._startDrawing();
+    }
 
-            </div>
+    //noinspection JSMethodCanBeStatic
+    /**
+     * Starts drawing chart onto DOM
+     * */
+    _startDrawing(){
+        //Create SVG element
+        let svg = d3.select("#container").append("svg")
+            .attr("width", constants.WIDTH + constants.MARGIN.left + constants.MARGIN.right)
+            .attr("height", constants.HEIGHT + constants.MARGIN.top + constants.MARGIN.bottom)
+            .append("g")
+            .attr("transform", "translate(" + constants.MARGIN.left + "," + constants.MARGIN.top + ")");
+
+    }
+
+    //noinspection JSMethodCanBeStatic
+    render(){
+        //noinspection CheckTagEmptyBody
+        return(
+            <div id="container"></div>
         )
     }
     

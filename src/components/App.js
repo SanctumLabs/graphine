@@ -5,7 +5,8 @@ import Chart from './chart';
 
 
 class App extends Component {
-  render() {
+  //noinspection JSMethodCanBeStatic
+    render() {
     return (
       <div className="App">
         <Header />

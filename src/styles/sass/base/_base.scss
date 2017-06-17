@@ -3,9 +3,8 @@ body {
   font-family: Arial;
   font-size: 11px;
   color: #111;
-   background-image: url("https://1.bp.blogspot.com/_W6PdCSPYbOM/TBAOi-mfW2I/AAAAAAAABNI/sXOOLguJI80/s1600/Alpe+d+Huez+2007+2.jpg"); 
-   background-size: cover;
-   background-repeat: no-repeat;
+  background-size: cover;
+  background: url("https://1.bp.blogspot.com/_W6PdCSPYbOM/TBAOi-mfW2I/AAAAAAAABNI/sXOOLguJI80/s1600/Alpe+d+Huez+2007+2.jpg") no-repeat;
 }
 
 h1 {
@@ -48,7 +47,6 @@ circle:hover {
   position: absolute;
   width: 200px;
   pointer-events: pointer;
-  width: 150px;
   line-height: 1.2;
   font-weight: bold;
   padding: 12px;

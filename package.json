@@ -6,8 +6,8 @@
     "axios": "^0.16.2",
     "d3": "^4.9.1",
     "prop-types": "^15.5.10",
-    "react": "^15.6.0",
-    "react-dom": "^15.6.0"
+    "react": "^15.6.2",
+    "react-dom": "^15.6.2"
   },
   "devDependencies": {
     "react-scripts": "1.0.7"

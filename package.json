@@ -6,12 +6,12 @@
     "axios": "^0.16.2",
     "d3": "^4.9.1",
     "prop-types": "^15.5.10",
-    "react": "^15.6.2",
-    "react-dom": "^15.6.2"
-    "snyk": "^1.316.1"
+    "react": "^15.6.0",
+    "react-dom": "^15.6.0",
+    "snyk": "^1.363.0"
   },
   "devDependencies": {
-    "react-scripts": "2.0.0"
+    "react-scripts": "3.3.0"
   },
   "scripts": {
     "start": "react-scripts start",

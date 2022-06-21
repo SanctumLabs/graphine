@@ -1,25 +1,12 @@
 {
-  "name": "d3scatterplot",
-  "version": "0.1.0",
+  "name": "graphine",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "d3": "^5.16.0",
-    "axios": "^0.21.0",
-    "prop-types": "^15.5.10",
-    "snyk": "^1.421.1"
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "typescript": "^4.7.4"
   },
-  "devDependencies": {
-    "react-scripts": "4.0.0"
-  },
+  "devDependencies": {},
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "snyk-protect": "snyk protect",
-    "prepare": "yarn run snyk-protect"
-  },
-  "snyk": true
+    "build": "build"
+  }
 }
